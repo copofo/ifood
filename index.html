@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Transação</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Adicionar Transação</h1>
+        <form>
+            <div class="input-group">
+                <label>Tipo de Transação*</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="tipo" value="receita" checked> Receita</label>
+                    <label><input type="radio" name="tipo" value="despesa"> Despesa</label>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="data">Data*</label>
+                <input type="date" id="data" name="data" required>
+            </div>
+
+            <div class="input-group">
+                <label for="valor">Valor*</label>
+                <input type="number" id="valor" name="valor" required step="0.01" min="0">
+            </div>
+
+            <div class="input-group">
+                <label for="tipoDeReceita">Tipo de Receita</label>
+                <select id="tipoDeReceita" name="tipoDeReceita">
+                    <option value="entrega" selected>Entrega</option>
+                    <option value="combustivel">Combustível</option>
+                    <option value="reserva">Reserva de Manutenção</option>
+                    <option value="outros">Outros</option>
+                </select>
+            </div>
+
+            <button type="button" id="adicionarDescricaoBtn">Adicionar Descrição</button>
+
+            <div class="input-group" id="descricaoInputGroup" style="display:none;">
+                <label for="descricao">Descrição</label>
+                <input type="text" id="descricao" name="descricao">
+            </div>
+
+            <div class="button-group">
+                <button type="submit">Salvar</button>
+                <button type="reset">Cancelar</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
