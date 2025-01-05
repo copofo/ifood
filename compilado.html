@@ -1,239 +1,267 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Transações</title>
 
-        
+
     <style>
         /* Definindo as variáveis de cor no :root */
-:root {
-    --cor-primaria: #803800; /* Laranja queimado */
-    --cor-secundaria: #170080; /* Roxo escuro */
-    --cor-terciaria: #008000; /* Verde escuro */
-    --cor-quaternaria: #47D447; /* Verde claro */
-    --cor-auxiliar: #FFB780; /* Laranja claro */
-    --cor-preta: #000000; /* Preto */
-    --cor-branca: #ffffff; /* Branco */
-}
+        :root {
+            --cor-primaria: #803800;
+            /* Laranja queimado */
+            --cor-secundaria: #170080;
+            /* Roxo escuro */
+            --cor-terciaria: #008000;
+            /* Verde escuro */
+            --cor-quaternaria: #47D447;
+            /* Verde claro */
+            --cor-auxiliar: #FFB780;
+            /* Laranja claro */
+            --cor-preta: #000000;
+            /* Preto */
+            --cor-branca: #ffffff;
+            /* Branco */
+        }
 
-/* Reset de estilos básicos */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        /* Reset de estilos básicos */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, var(--cor-secundaria), var(--cor-quaternaria)); /* Gradiente de fundo usando variáveis */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    padding: 10px; /* Adicionando padding para celulares */
-}
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, var(--cor-secundaria), var(--cor-quaternaria));
+            /* Gradiente de fundo usando variáveis */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 10px;
+            /* Adicionando padding para celulares */
+        }
 
-.container {
-    background-color: var(--cor-branca); /* Usando branco da paleta */
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 350px; /* Largura máxima ajustada para telas pequenas */
-    text-align: center;
-}
+        .container {
+            background-color: var(--cor-branca);
+            /* Usando branco da paleta */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 350px;
+            /* Largura máxima ajustada para telas pequenas */
+            text-align: center;
+        }
 
-h1 {
-    color: var(--cor-secundaria); /* Usando roxo escuro */
-    font-size: 20px;
-    margin-bottom: 20px;
-}
+        h1 {
+            color: var(--cor-secundaria);
+            /* Usando roxo escuro */
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
 
-.input-group {
-    margin-bottom: 15px;
-    text-align: left;
-}
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
 
-label {
-    font-size: 14px;
-    color: var(--cor-secundaria); /* Usando roxo escuro */
-    margin-bottom: 5px;
-    display: block;
-}
+        label {
+            font-size: 14px;
+            color: var(--cor-secundaria);
+            /* Usando roxo escuro */
+            margin-bottom: 5px;
+            display: block;
+        }
 
-input[type="date"],
-input[type="number"],
-input[type="text"],
-select,
-button {
-    width: 100%;
-    padding: 10px;
-    margin-top: 8px;
-    border: 2px solid var(--cor-auxiliar); /* Usando o laranja claro */
-    border-radius: 4px;
-    font-size: 14px;
-    transition: border-color 0.3s ease, background-color 0.3s ease;
-}
+        input[type="date"],
+        input[type="number"],
+        input[type="text"],
+        select,
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            border: 2px solid var(--cor-auxiliar);
+            /* Usando o laranja claro */
+            border-radius: 4px;
+            font-size: 14px;
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+        }
 
-input[type="text"]:focus,
-input[type="date"]:focus,
-input[type="number"]:focus,
-select:focus {
-    outline: none;
-    border-color: var(--cor-quaternaria); /* Verde claro no foco */
-    background-color: #f7f7f7; /* Cor suave de fundo */
-}
+        input[type="text"]:focus,
+        input[type="date"]:focus,
+        input[type="number"]:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--cor-quaternaria);
+            /* Verde claro no foco */
+            background-color: #f7f7f7;
+            /* Cor suave de fundo */
+        }
 
-button {
-    background-color: var(--cor-primaria); /* Usando o laranja queimado */
-    color: var(--cor-branca); /* Texto branco no botão */
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease, background 0.5s ease;
-    padding: 12px;
-    border-radius: 5px;
-    font-size: 14px;
-    margin-bottom: 8px; /* Espaço entre os botões quando empilhados */
-}
+        button {
+            background-color: var(--cor-primaria);
+            /* Usando o laranja queimado */
+            color: var(--cor-branca);
+            /* Texto branco no botão */
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease, background 0.5s ease;
+            padding: 12px;
+            border-radius: 5px;
+            font-size: 14px;
+            margin-bottom: 8px;
+            /* Espaço entre os botões quando empilhados */
+        }
 
-button:hover {
-    background: linear-gradient(135deg, var(--cor-primaria), var(--cor-auxiliar)); /* Gradiente ao passar o mouse */
-    transform: scale(1.05);
-}
+        button:hover {
+            background: linear-gradient(135deg, var(--cor-primaria), var(--cor-auxiliar));
+            /* Gradiente ao passar o mouse */
+            transform: scale(1.05);
+        }
 
-button[type="reset"] {
-    background-color: var(--cor-secundaria); /* Cor roxa para o botão cancelar */
-}
+        button[type="reset"] {
+            background-color: var(--cor-secundaria);
+            /* Cor roxa para o botão cancelar */
+        }
 
-button[type="reset"]:hover {
-    background: linear-gradient(135deg, var(--cor-secundaria), var(--cor-terciaria)); /* Gradiente de roxo para verde */
-}
+        button[type="reset"]:hover {
+            background: linear-gradient(135deg, var(--cor-secundaria), var(--cor-terciaria));
+            /* Gradiente de roxo para verde */
+        }
 
-.radio-group label {
-    margin-right: 20px;
-}
+        .radio-group label {
+            margin-right: 20px;
+        }
 
-.button-group {
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px;
-    gap: 10px; /* Adicionando espaçamento entre os botões */
-}
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            margin-top: 20px;
+            gap: 10px;
+            /* Adicionando espaçamento entre os botões */
+        }
 
-button[type="button"] {
-    background-color: var(--cor-quaternaria); /* Verde claro para o botão adicionar descrição */
-    color: var(--cor-branca);
-    font-size: 14px;
-}
+        button[type="button"] {
+            background-color: var(--cor-quaternaria);
+            /* Verde claro para o botão adicionar descrição */
+            color: var(--cor-branca);
+            font-size: 14px;
+        }
 
-button[type="button"]:hover {
-    background-color: var(--cor-terciaria); /* Verde escuro no hover */
-}
+        button[type="button"]:hover {
+            background-color: var(--cor-terciaria);
+            /* Verde escuro no hover */
+        }
 
-select {
-    background-color: #f7f7f7;
-    border: 2px solid var(--cor-auxiliar); /* Laranja claro */
-    font-size: 14px;
-}
+        select {
+            background-color: #f7f7f7;
+            border: 2px solid var(--cor-auxiliar);
+            /* Laranja claro */
+            font-size: 14px;
+        }
 
-select:focus {
-    border-color: var(--cor-quaternaria);
-    background-color: #e9f6e9;
-}
+        select:focus {
+            border-color: var(--cor-quaternaria);
+            background-color: #e9f6e9;
+        }
 
-#descricaoInputGroup {
-    margin-top: 15px;
-}
+        #descricaoInputGroup {
+            margin-top: 15px;
+        }
 
-input[type="text"] {
-    background-color: #f7f7f7;
-}
+        input[type="text"] {
+            background-color: #f7f7f7;
+        }
 
-input[type="text"]:focus {
-    background-color: #e9f6e9;
-}
+        input[type="text"]:focus {
+            background-color: #e9f6e9;
+        }
 
-/* Adicionando animações suaves */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
+        /* Adicionando animações suaves */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
 
-.container {
-    animation: fadeIn 0.5s ease-in;
-}
+            to {
+                opacity: 1;
+            }
+        }
 
-/* Media Queries para Responsividade */
+        .container {
+            animation: fadeIn 0.5s ease-in;
+        }
 
-/* Ajustes para telas muito pequenas, como o iPhone 5 */
-@media (max-width: 320px) {
-    .container {
-        max-width: 100%;
-        padding: 10px;
-    }
+        /* Media Queries para Responsividade */
 
-    h1 {
-        font-size: 18px;
-        margin-bottom: 15px;
-    }
+        /* Ajustes para telas muito pequenas, como o iPhone 5 */
+        @media (max-width: 320px) {
+            .container {
+                max-width: 100%;
+                padding: 10px;
+            }
 
-    input[type="date"],
-    input[type="number"],
-    input[type="text"],
-    select,
-    button {
-        font-size: 12px;
-        padding: 8px;
-    }
+            h1 {
+                font-size: 18px;
+                margin-bottom: 15px;
+            }
 
-    button {
-        font-size: 12px;
-        padding: 10px;
-    }
+            input[type="date"],
+            input[type="number"],
+            input[type="text"],
+            select,
+            button {
+                font-size: 12px;
+                padding: 8px;
+            }
 
-    .button-group {
-        flex-direction: column;
-        gap: 8px;
-    }
+            button {
+                font-size: 12px;
+                padding: 10px;
+            }
 
-    .button-group button {
-        width: 100%;
-    }
+            .button-group {
+                flex-direction: column;
+                gap: 8px;
+            }
 
-    input[type="text"] {
-        font-size: 12px;
-        padding: 8px;
-    }
-}
+            .button-group button {
+                width: 100%;
+            }
 
-@media (max-width: 480px) {
-    /* Para telas pequenas, mas maiores que 320px */
-    .container {
-        max-width: 100%;
-        padding: 15px;
-    }
+            input[type="text"] {
+                font-size: 12px;
+                padding: 8px;
+            }
+        }
 
-    h1 {
-        font-size: 20px;
-        margin-bottom: 20px;
-    }
+        @media (max-width: 480px) {
 
-    button {
-        padding: 10px;
-        font-size: 14px;
-    }
+            /* Para telas pequenas, mas maiores que 320px */
+            .container {
+                max-width: 100%;
+                padding: 15px;
+            }
 
-    .button-group button {
-        padding: 12px;
-    }
-}
+            h1 {
+                font-size: 20px;
+                margin-bottom: 20px;
+            }
 
+            button {
+                padding: 10px;
+                font-size: 14px;
+            }
+
+            .button-group button {
+                padding: 12px;
+            }
+        }
     </style>
 
 
@@ -241,262 +269,275 @@ input[type="text"]:focus {
 
 
 
-<style>
-    :root {
-    --cor-primaria: #803800; /* Cor para Receita */
-    --cor-secundaria: #170080;
-    --cor-terciaria: #008000; /* Cor para Despesa */
-    --cor-quaternaria: #47D447;
-    --cor-auxiliar: #FFB780;
-    --cor-preta: #000000;
-    --cor-branca: #ffffff;
-}
+    <style>
+        :root {
+            --cor-primaria: #803800;
+            /* Cor para Receita */
+            --cor-secundaria: #170080;
+            --cor-terciaria: #008000;
+            /* Cor para Despesa */
+            --cor-quaternaria: #47D447;
+            --cor-auxiliar: #FFB780;
+            --cor-preta: #000000;
+            --cor-branca: #ffffff;
+        }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, var(--cor-secundaria), var(--cor-quaternaria));
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start; /* Garante que a lista fique no topo */
-    height: 100vh;
-    padding: 0 20px; /* Espaçamento em torno da página */
-    overflow-y: auto; /* Permite rolar a página */
-    flex-direction: column;
-}
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, var(--cor-secundaria), var(--cor-quaternaria));
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            /* Garante que a lista fique no topo */
+            height: 100vh;
+            padding: 0 20px;
+            /* Espaçamento em torno da página */
+            overflow-y: auto;
+            /* Permite rolar a página */
+            flex-direction: column;
+        }
 
-.container {
-    background-color: var(--cor-branca);
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 600px;
-    text-align: center;
-    border: 2px solid var(--cor-quaternaria);
-    margin-bottom: 20px;
-}
+        .container {
+            background-color: var(--cor-branca);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+            border: 2px solid var(--cor-quaternaria);
+            margin-bottom: 20px;
+        }
 
-h1 {
-    color: var(--cor-secundaria);
-    margin-bottom: 20px;
-    font-size: 28px;
-    font-weight: bold;
-}
+        h1 {
+            color: var(--cor-secundaria);
+            margin-bottom: 20px;
+            font-size: 28px;
+            font-weight: bold;
+        }
 
-ul#transacoes {
-    list-style-type: none;
-    padding: 0;
-    margin-top: 30px; /* Garante que a lista não fique colada no topo */
-    text-align: left;
-    padding-left: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
+        ul#transacoes {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 30px;
+            /* Garante que a lista não fique colada no topo */
+            text-align: left;
+            padding-left: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
 
-.transacao {
-    padding: 20px;
-    margin-bottom: 15px;
-    border-radius: 12px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-    color: var(--cor-preta);
-    font-size: 16px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-    border-left: 8px solid transparent;
-    background: linear-gradient(135deg, var(--cor-auxiliar), var(--cor-quaternaria));
-    display: flex;
-    flex-direction: column;
-}
+        .transacao {
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            color: var(--cor-preta);
+            font-size: 16px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            border-left: 8px solid transparent;
+            background: linear-gradient(135deg, var(--cor-auxiliar), var(--cor-quaternaria));
+            display: flex;
+            flex-direction: column;
+        }
 
-.transacao.receita {
-    border-left-color: var(--cor-primaria);
-}
+        .transacao.receita {
+            border-left-color: var(--cor-primaria);
+        }
 
-.transacao.despesa {
-    border-left-color: var(--cor-terciaria);
-}
+        .transacao.despesa {
+            border-left-color: var(--cor-terciaria);
+        }
 
-.transacao:hover {
-    background: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria));
-    color: var(--cor-branca);
-    transform: scale(1.05);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-}
-
-
-
-/* Restante do CSS mantém-se como estava */
-
-/* Restante do CSS mantém-se como estava */
-
-/* Botão flutuante de adicionar transação (círculo pequeno) */
-.add-transacao {
-    position: fixed;
-    bottom: 20px; /* Distância do fundo da tela */
-    right: 20px; /* Distância da borda direita da tela */
-    width: 50px; /* Ajustando o tamanho do botão para ser pequeno */
-    height: 50px; /* Mesmo tamanho para garantir um botão circular */
-    background-color: var(--cor-primaria);
-    color: var(--cor-branca);
-    font-size: 30px; /* Tamanho do ícone de adição */
-    border: none;
-    border-radius: 50%; /* Garantindo que o botão seja um círculo */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: background 0.3s ease, transform 0.3s ease;
-}
-
-.add-transacao:hover {
-    background: linear-gradient(135deg, var(--cor-secundaria), var(--cor-auxiliar));
-    transform: scale(1.1);
-}
+        .transacao:hover {
+            background: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria));
+            color: var(--cor-branca);
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
 
 
 
+        /* Restante do CSS mantém-se como estava */
 
-/* Efeito Hover nos botões */
-button {
-    background-color: var(--cor-primaria);
-    color: var(--cor-branca);
-    padding: 14px 24px;
-    font-size: 18px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
+        /* Restante do CSS mantém-se como estava */
 
-/* Efeito Hover e foco para botões */
-button:hover {
-    background: linear-gradient(135deg, var(--cor-secundaria), var(--cor-auxiliar));
-    transform: scale(1.05);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-}
+        /* Botão flutuante de adicionar transação (círculo pequeno) */
+        .add-transacao {
+            position: fixed;
+            bottom: 20px;
+            /* Distância do fundo da tela */
+            right: 20px;
+            /* Distância da borda direita da tela */
+            width: 50px;
+            /* Ajustando o tamanho do botão para ser pequeno */
+            height: 50px;
+            /* Mesmo tamanho para garantir um botão circular */
+            background-color: var(--cor-primaria);
+            color: var(--cor-branca);
+            font-size: 30px;
+            /* Tamanho do ícone de adição */
+            border: none;
+            border-radius: 50%;
+            /* Garantindo que o botão seja um círculo */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
 
-/* Efeito de click nos botões */
-button:active {
-    transform: scale(1.02);
-}
-
-.formulario-container {
-    display: none;
-    background-color: var(--cor-branca);
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 500px;
-    margin: 0 auto;
-    border: 2px solid var(--cor-quaternaria);
-}
-
-.input-group {
-    margin-bottom: 20px;
-    text-align: left;
-}
-
-label {
-    font-size: 16px;
-    color: var(--cor-secundaria);
-    margin-bottom: 10px;
-    display: block;
-    font-weight: bold;
-}
-
-input[type="date"],
-input[type="number"],
-input[type="text"],
-select,
-button {
-    width: 100%;
-    padding: 12px;
-    margin-top: 8px;
-    border: 2px solid var(--cor-auxiliar);
-    border-radius: 8px;
-    font-size: 16px;
-    transition: border-color 0.3s ease, background-color 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-input[type="text"]:focus,
-input[type="date"]:focus,
-input[type="number"]:focus,
-select:focus {
-    outline: none;
-    border-color: var(--cor-quaternaria);
-    background-color: #f7f7f7;
-    box-shadow: 0 0 8px var(--cor-quaternaria);
-}
-
-button[type="reset"] {
-    background-color: var(--cor-secundaria);
-}
-
-button[type="reset"]:hover {
-    background: linear-gradient(135deg, var(--cor-secundaria), var(--cor-terciaria));
-}
-
-.button-group {
-    display: flex;
-    justify-content: space-between;
-    gap: 15px;
-}
-
-input[type="text"],
-select {
-    background-color: #f9f9f9;
-    border: 2px solid var(--cor-auxiliar);
-    border-radius: 8px;
-}
-
-input[type="text"]:focus,
-select:focus {
-    background-color: #ffffff;
-    border-color: var(--cor-quaternaria);
-}
-
-/* Adicionando efeito ao passar o mouse sobre o campo de input */
-input[type="text"]:hover,
-input[type="date"]:hover,
-input[type="number"]:hover,
-select:hover {
-    background-color: #f3f3f3;
-    border-color: var(--cor-primaria);
-    transition: border-color 0.3s ease;
-}
-
-button.add-transacao {
-    background-color: #803800;
-    color: white;
-    padding: 12px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-}
-
-button.add-transacao:hover {
-    background: linear-gradient(135deg, #803800, #FFB780);
-}
-</style>
+        .add-transacao:hover {
+            background: linear-gradient(135deg, var(--cor-secundaria), var(--cor-auxiliar));
+            transform: scale(1.1);
+        }
 
 
-   
+
+
+        /* Efeito Hover nos botões */
+        button {
+            background-color: var(--cor-primaria);
+            color: var(--cor-branca);
+            padding: 14px 24px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Efeito Hover e foco para botões */
+        button:hover {
+            background: linear-gradient(135deg, var(--cor-secundaria), var(--cor-auxiliar));
+            transform: scale(1.05);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Efeito de click nos botões */
+        button:active {
+            transform: scale(1.02);
+        }
+
+        .formulario-container {
+            display: none;
+            background-color: var(--cor-branca);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            border: 2px solid var(--cor-quaternaria);
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        label {
+            font-size: 16px;
+            color: var(--cor-secundaria);
+            margin-bottom: 10px;
+            display: block;
+            font-weight: bold;
+        }
+
+        input[type="date"],
+        input[type="number"],
+        input[type="text"],
+        select,
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            border: 2px solid var(--cor-auxiliar);
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="text"]:focus,
+        input[type="date"]:focus,
+        input[type="number"]:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--cor-quaternaria);
+            background-color: #f7f7f7;
+            box-shadow: 0 0 8px var(--cor-quaternaria);
+        }
+
+        button[type="reset"] {
+            background-color: var(--cor-secundaria);
+        }
+
+        button[type="reset"]:hover {
+            background: linear-gradient(135deg, var(--cor-secundaria), var(--cor-terciaria));
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        input[type="text"],
+        select {
+            background-color: #f9f9f9;
+            border: 2px solid var(--cor-auxiliar);
+            border-radius: 8px;
+        }
+
+        input[type="text"]:focus,
+        select:focus {
+            background-color: #ffffff;
+            border-color: var(--cor-quaternaria);
+        }
+
+        /* Adicionando efeito ao passar o mouse sobre o campo de input */
+        input[type="text"]:hover,
+        input[type="date"]:hover,
+        input[type="number"]:hover,
+        select:hover {
+            background-color: #f3f3f3;
+            border-color: var(--cor-primaria);
+            transition: border-color 0.3s ease;
+        }
+
+        button.add-transacao {
+            background-color: #803800;
+            color: white;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        button.add-transacao:hover {
+            background: linear-gradient(135deg, #803800, #FFB780);
+        }
+    </style>
+
+
+
 </head>
+
 <body>
 
 
@@ -554,93 +595,94 @@ button.add-transacao:hover {
             </div>
         </form>
     </div>
-    
 
-    
 
-    
+
+
+
 </body>
 
 
 
-    <script>
-        let divTransation = document.getElementById('divTransation')
-        let formAdd = document.getElementById('formAdd')
-        let btnAdd = document.getElementById('btnAdd')
+<script>
+    let divTransation = document.getElementById('divTransation')
+    let formAdd = document.getElementById('formAdd')
+    let btnAdd = document.getElementById('btnAdd')
 
 
 
-        btnAdd.addEventListener('click', ()=>{
-            formAdd.style.display = "block"
-            divTransation.style.display = "none"
-        })
-    </script>
-
-
-
-
-    <script>
-        // Função para gerar transações fake
-function fakeTransactions() {
-    const transacoes = [
-        { tipo: "Receita", descricao: "Venda de Produto A", valor: 100.00, data: "05/01/2025" },
-        { tipo: "Despesa", descricao: "Combustível", valor: 50.00, data: "06/01/2025" },
-        { tipo: "Receita", descricao: "Freelance Web Development", valor: 300.00, data: "07/01/2025" },
-        { tipo: "Despesa", descricao: "Compra de material", valor: 150.00, data: "08/01/2025" },
-        { tipo: "Receita", descricao: "Venda de Produto B", valor: 200.00, data: "09/01/2025" },
-        { tipo: "Despesa", descricao: "Manutenção de equipamentos", valor: 120.00, data: "10/01/2025" },
-        { tipo: "Receita", descricao: "Consultoria", valor: 400.00, data: "11/01/2025" },
-        { tipo: "Despesa", descricao: "Pagamento de internet", valor: 80.00, data: "12/01/2025" },
-        { tipo: "Receita", descricao: "Venda de serviço", valor: 500.00, data: "13/01/2025" },
-        { tipo: "Despesa", descricao: "Aluguel", valor: 1000.00, data: "14/01/2025" },
-        { tipo: "Receita", descricao: "Venda de Produto C", valor: 150.00, data: "15/01/2025" },
-        { tipo: "Despesa", descricao: "Compra de software", valor: 200.00, data: "16/01/2025" },
-        { tipo: "Receita", descricao: "Pagamento de projeto", valor: 350.00, data: "17/01/2025" }
-    ];
-
-    // Selecionar o elemento da lista no DOM
-    const listaTransacoes = document.getElementById("transacoes");
-
-    // Limpar a lista antes de adicionar as transações
-    listaTransacoes.innerHTML = '';
-
-    // Adicionar cada transação na lista
-    transacoes.forEach(transacao => {
-        const li = document.createElement("li");
-        li.classList.add("transacao", transacao.tipo.toLowerCase());
-
-        li.innerHTML = `
-            <p><strong>${transacao.tipo}:</strong> ${transacao.descricao}</p>
-            <p>Valor: R$ ${transacao.valor.toFixed(2)}</p>
-            <p>Data: ${transacao.data}</p>
-        `;
-
-        listaTransacoes.appendChild(li);
-    });
-}
-
-// Chama a função para adicionar as transações quando a página carregar
-document.addEventListener("DOMContentLoaded", fakeTransactions);
-
-    </script>
+    btnAdd.addEventListener('click', () => {
+        formAdd.style.display = "block"
+        divTransation.style.display = "none"
+    })
+</script>
 
 
 
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-    // Preencher o campo de data com a data atual
-    var dataInput = document.getElementById("data");
-    var dataAtual = new Date();
-    var dataFormatada = dataAtual.toISOString().split("T")[0]; // Formato YYYY-MM-DD
-    dataInput.value = dataFormatada;
+    // Função para gerar transações fake
+    function fakeTransactions() {
+        const transacoes = [
+            { tipo: "Receita", descricao: "Venda de Produto A", valor: 100.00, data: "05/01/2025" },
+            { tipo: "Despesa", descricao: "Combustível", valor: 50.00, data: "06/01/2025" },
+            { tipo: "Receita", descricao: "Freelance Web Development", valor: 300.00, data: "07/01/2025" },
+            { tipo: "Despesa", descricao: "Compra de material", valor: 150.00, data: "08/01/2025" },
+            { tipo: "Receita", descricao: "Venda de Produto B", valor: 200.00, data: "09/01/2025" },
+            { tipo: "Despesa", descricao: "Manutenção de equipamentos", valor: 120.00, data: "10/01/2025" },
+            { tipo: "Receita", descricao: "Consultoria", valor: 400.00, data: "11/01/2025" },
+            { tipo: "Despesa", descricao: "Pagamento de internet", valor: 80.00, data: "12/01/2025" },
+            { tipo: "Receita", descricao: "Venda de serviço", valor: 500.00, data: "13/01/2025" },
+            { tipo: "Despesa", descricao: "Aluguel", valor: 1000.00, data: "14/01/2025" },
+            { tipo: "Receita", descricao: "Venda de Produto C", valor: 150.00, data: "15/01/2025" },
+            { tipo: "Despesa", descricao: "Compra de software", valor: 200.00, data: "16/01/2025" },
+            { tipo: "Receita", descricao: "Pagamento de projeto", valor: 350.00, data: "17/01/2025" }
+        ];
 
-    // Alternar a visibilidade do campo descrição ao clicar no botão "Adicionar Descrição"
-    document.getElementById("adicionarDescricaoBtn").addEventListener("click", function() {
-        var descricaoInputGroup = document.getElementById("descricaoInputGroup");
-        descricaoInputGroup.style.display = descricaoInputGroup.style.display === "none" ? "block" : "none";
-    });
-});
+        // Selecionar o elemento da lista no DOM
+        const listaTransacoes = document.getElementById("transacoes");
+
+        // Limpar a lista antes de adicionar as transações
+        listaTransacoes.innerHTML = '';
+
+        // Adicionar cada transação na lista
+        transacoes.forEach(transacao => {
+            const li = document.createElement("li");
+            li.classList.add("transacao", transacao.tipo.toLowerCase());
+
+            li.innerHTML = `
+            <p><strong>${transacao.tipo}:</strong> ${transacao.descricao}</p>
+            <p>Valor: R$ ${transacao.valor.toFixed(2)}</p>
+            <p>Data: ${transacao.data}</p>
+        `;
+
+            listaTransacoes.appendChild(li);
+        });
+    }
+
+    // Chama a função para adicionar as transações quando a página carregar
+    document.addEventListener("DOMContentLoaded", fakeTransactions);
 
 </script>
+
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Preencher o campo de data com a data atual
+        var dataInput = document.getElementById("data");
+        var dataAtual = new Date();
+        var dataFormatada = dataAtual.toISOString().split("T")[0]; // Formato YYYY-MM-DD
+        dataInput.value = dataFormatada;
+
+        // Alternar a visibilidade do campo descrição ao clicar no botão "Adicionar Descrição"
+        document.getElementById("adicionarDescricaoBtn").addEventListener("click", function () {
+            var descricaoInputGroup = document.getElementById("descricaoInputGroup");
+            descricaoInputGroup.style.display = descricaoInputGroup.style.display === "none" ? "block" : "none";
+        });
+    });
+
+</script>
+
 </html>
