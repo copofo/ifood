@@ -1,3 +1,15 @@
+/* Definindo as variáveis de cor no :root */
+:root {
+    --cor-primaria: #803800; /* Laranja queimado */
+    --cor-secundaria: #170080; /* Roxo escuro */
+    --cor-terciaria: #008000; /* Verde escuro */
+    --cor-quaternaria: #47D447; /* Verde claro */
+    --cor-auxiliar: #FFB780; /* Laranja claro */
+    --cor-preta: #000000; /* Preto */
+    --cor-branca: #ffffff; /* Branco */
+}
+
+/* Reset de estilos básicos */
 * {
     margin: 0;
     padding: 0;
@@ -6,7 +18,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #170080, #47D447); /* Gradiente de fundo */
+    background: linear-gradient(135deg, var(--cor-secundaria), var(--cor-quaternaria)); /* Gradiente de fundo usando variáveis */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,7 +27,7 @@ body {
 }
 
 .container {
-    background-color: #ffffff; /* Branco para contraste */
+    background-color: var(--cor-branca); /* Usando branco da paleta */
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -25,7 +37,7 @@ body {
 }
 
 h1 {
-    color: #170080; /* Cor do título: roxo escuro */
+    color: var(--cor-secundaria); /* Usando roxo escuro */
     font-size: 20px;
     margin-bottom: 20px;
 }
@@ -37,7 +49,7 @@ h1 {
 
 label {
     font-size: 14px;
-    color: #170080; /* Cor do texto das labels */
+    color: var(--cor-secundaria); /* Usando roxo escuro */
     margin-bottom: 5px;
     display: block;
 }
@@ -50,7 +62,7 @@ button {
     width: 100%;
     padding: 10px;
     margin-top: 8px;
-    border: 2px solid #FFB780;
+    border: 2px solid var(--cor-auxiliar); /* Usando o laranja claro */
     border-radius: 4px;
     font-size: 14px;
     transition: border-color 0.3s ease, background-color 0.3s ease;
@@ -61,13 +73,13 @@ input[type="date"]:focus,
 input[type="number"]:focus,
 select:focus {
     outline: none;
-    border-color: #47D447; /* Verde claro no foco */
+    border-color: var(--cor-quaternaria); /* Verde claro no foco */
     background-color: #f7f7f7; /* Cor suave de fundo */
 }
 
 button {
-    background-color: #803800; /* Laranja queimado para destaque */
-    color: #ffffff; /* Texto branco no botão */
+    background-color: var(--cor-primaria); /* Usando o laranja queimado */
+    color: var(--cor-branca); /* Texto branco no botão */
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease, background 0.5s ease;
@@ -78,16 +90,16 @@ button {
 }
 
 button:hover {
-    background: linear-gradient(135deg, #803800, #FFB780); /* Gradiente ao passar o mouse */
+    background: linear-gradient(135deg, var(--cor-primaria), var(--cor-auxiliar)); /* Gradiente ao passar o mouse */
     transform: scale(1.05);
 }
 
 button[type="reset"] {
-    background-color: #170080; /* Cor roxa para o botão cancelar */
+    background-color: var(--cor-secundaria); /* Cor roxa para o botão cancelar */
 }
 
 button[type="reset"]:hover {
-    background: linear-gradient(135deg, #170080, #008000); /* Gradiente de roxo para verde */
+    background: linear-gradient(135deg, var(--cor-secundaria), var(--cor-terciaria)); /* Gradiente de roxo para verde */
 }
 
 .radio-group label {
@@ -102,23 +114,23 @@ button[type="reset"]:hover {
 }
 
 button[type="button"] {
-    background-color: #47D447; /* Verde claro para o botão adicionar descrição */
-    color: #ffffff;
+    background-color: var(--cor-quaternaria); /* Verde claro para o botão adicionar descrição */
+    color: var(--cor-branca);
     font-size: 14px;
 }
 
 button[type="button"]:hover {
-    background-color: #008000; /* Verde escuro no hover */
+    background-color: var(--cor-terciaria); /* Verde escuro no hover */
 }
 
 select {
     background-color: #f7f7f7;
-    border: 2px solid #FFB780;
+    border: 2px solid var(--cor-auxiliar); /* Laranja claro */
     font-size: 14px;
 }
 
 select:focus {
-    border-color: #47D447;
+    border-color: var(--cor-quaternaria);
     background-color: #e9f6e9;
 }
 

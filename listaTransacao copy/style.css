@@ -1,0 +1,250 @@
+:root {
+    --cor-primaria: #803800; /* Cor para Receita */
+    --cor-secundaria: #170080;
+    --cor-terciaria: #008000; /* Cor para Despesa */
+    --cor-quaternaria: #47D447;
+    --cor-auxiliar: #FFB780;
+    --cor-preta: #000000;
+    --cor-branca: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, var(--cor-secundaria), var(--cor-quaternaria));
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start; /* Garante que a lista fique no topo */
+    height: 100vh;
+    padding: 0 20px; /* Espaçamento em torno da página */
+    overflow-y: auto; /* Permite rolar a página */
+    flex-direction: column;
+}
+
+.container {
+    background-color: var(--cor-branca);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    border: 2px solid var(--cor-quaternaria);
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: var(--cor-secundaria);
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+ul#transacoes {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 30px; /* Garante que a lista não fique colada no topo */
+    text-align: left;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.transacao {
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    color: var(--cor-preta);
+    font-size: 16px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    border-left: 8px solid transparent;
+    background: linear-gradient(135deg, var(--cor-auxiliar), var(--cor-quaternaria));
+    display: flex;
+    flex-direction: column;
+}
+
+.transacao.receita {
+    border-left-color: var(--cor-primaria);
+}
+
+.transacao.despesa {
+    border-left-color: var(--cor-terciaria);
+}
+
+.transacao:hover {
+    background: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria));
+    color: var(--cor-branca);
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+
+
+/* Restante do CSS mantém-se como estava */
+
+/* Restante do CSS mantém-se como estava */
+
+/* Botão flutuante de adicionar transação (círculo pequeno) */
+.add-transacao {
+    position: fixed;
+    bottom: 20px; /* Distância do fundo da tela */
+    right: 20px; /* Distância da borda direita da tela */
+    width: 50px; /* Ajustando o tamanho do botão para ser pequeno */
+    height: 50px; /* Mesmo tamanho para garantir um botão circular */
+    background-color: var(--cor-primaria);
+    color: var(--cor-branca);
+    font-size: 30px; /* Tamanho do ícone de adição */
+    border: none;
+    border-radius: 50%; /* Garantindo que o botão seja um círculo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.add-transacao:hover {
+    background: linear-gradient(135deg, var(--cor-secundaria), var(--cor-auxiliar));
+    transform: scale(1.1);
+}
+
+
+
+
+/* Efeito Hover nos botões */
+button {
+    background-color: var(--cor-primaria);
+    color: var(--cor-branca);
+    padding: 14px 24px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Efeito Hover e foco para botões */
+button:hover {
+    background: linear-gradient(135deg, var(--cor-secundaria), var(--cor-auxiliar));
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Efeito de click nos botões */
+button:active {
+    transform: scale(1.02);
+}
+
+.formulario-container {
+    display: none;
+    background-color: var(--cor-branca);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    border: 2px solid var(--cor-quaternaria);
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+label {
+    font-size: 16px;
+    color: var(--cor-secundaria);
+    margin-bottom: 10px;
+    display: block;
+    font-weight: bold;
+}
+
+input[type="date"],
+input[type="number"],
+input[type="text"],
+select,
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    border: 2px solid var(--cor-auxiliar);
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="number"]:focus,
+select:focus {
+    outline: none;
+    border-color: var(--cor-quaternaria);
+    background-color: #f7f7f7;
+    box-shadow: 0 0 8px var(--cor-quaternaria);
+}
+
+button[type="reset"] {
+    background-color: var(--cor-secundaria);
+}
+
+button[type="reset"]:hover {
+    background: linear-gradient(135deg, var(--cor-secundaria), var(--cor-terciaria));
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+input[type="text"],
+select {
+    background-color: #f9f9f9;
+    border: 2px solid var(--cor-auxiliar);
+    border-radius: 8px;
+}
+
+input[type="text"]:focus,
+select:focus {
+    background-color: #ffffff;
+    border-color: var(--cor-quaternaria);
+}
+
+/* Adicionando efeito ao passar o mouse sobre o campo de input */
+input[type="text"]:hover,
+input[type="date"]:hover,
+input[type="number"]:hover,
+select:hover {
+    background-color: #f3f3f3;
+    border-color: var(--cor-primaria);
+    transition: border-color 0.3s ease;
+}
+
+button.add-transacao {
+    background-color: #803800;
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+button.add-transacao:hover {
+    background: linear-gradient(135deg, #803800, #FFB780);
+}
